@@ -243,37 +243,142 @@ void ArrayLocal()
 }
 
 
-int main()
-{ 
-    
-    
-    
-    const int MAX_SIZE = 560;
-    std::cout << "Hello World!\n";
-    ShowMainMenu();
-    /*
-    double A[MAX_SIZE], B[MAX_SIZE],C[MAX_SIZE];
-    int n,m;
-    n = RndInputArray(MAX_SIZE, A);
-    WriteArrayTextFile(n, A, "1.txt");
-    m = ReadArrayTextFile(MAX_SIZE, B, "1.txt");
-    cout << " \n m= " << m << endl;
-    for (int i = 0; i < m; i++)
-        cout << B[i] << "   ";
-    WriteArrayBinFile(n, A, "1.bin");
-    m = ReadArrayBinFile(MAX_SIZE, C, "1.bin");
-    cout << " \n m= " << m << endl;
-    for (int i = 0; i < m; i++)
-        cout << C[i] << "   ";
-    cout << "\n  Vector \n";
-    vector<double> vA;
-    ConsoleInputVector(MAX_SIZE, vA);
-    for (auto v : vA) {
-        cout << v << "   ";
-    }
-*/
-    TaskV();
-    return 1;
+void TaskOne()
+{
+    int N;
+    cout << "Enter size of Array :";
+    cin >> N;
+    vector<int> A;
+    A.resize(N);
 
+    float average = 0;
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Enter element " << i << " of list A :";
+        int element;
+        cin >> element;
+        A[i] = element;
+        average += element;
+    }
+    average /= N;
+    cout << "Average is " << average << endl;
+}
+
+void TaskTwo()
+{
+    int N;
+    cout << "Enter size of Array :";
+    cin >> N;
+    vector<int> A;
+    A.resize(N);
+
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Enter element " << i << " of list A :";
+        cin >> A[i];
+    }
+
+    int T1;
+    int T2;
+
+    cout << endl << "Enter value of T1 :" << endl;
+    cin >> T1;
+
+    cout << "Enter value of T2 :" << endl;
+    cin >> T2;
+
+    int firstT2 = -1;
+    for (int i = 0; i < A.size(); ++i)
+    {
+        if (A[i] == T2)
+        {
+            firstT2 = i;
+            break;
+        }
+    }
+
+    if (firstT2 == -1)
+        cout << "Element equal to T2 was not found in the list" << endl;
+
+    int lastMinId = -1;
+    int minVal = 0;
+    bool foundValid = false;
+
+    for (int i = firstT2 + 1; i < A.size(); ++i)
+    {
+        if (A[i] < T1)
+        {
+            if (!foundValid || A[i] <= minVal)
+            {
+                minVal = A[i];
+                lastMinId = i;
+                foundValid = true;
+            }
+        }
+    }
+
+    if (foundValid)
+    {
+        cout << "T1 = " << T1 << ", T2 = " << T2 << endl;
+        cout << "Last minimum element id: " << lastMinId<< ", With value : " << minVal << endl;
+    }
+    else
+    {
+        cout << "No element found" << endl;
+    }
+}
+
+void TaskThree()
+{
+    int n;
+    int m;
+
+    cout << "Enter the first size of the matrice: ";
+    cin >> n;
+    if(n > 100)
+        n = 100;
+
+    cout << endl << "Enter the second size of the matrice: ";
+    cin >> m;
+    if(m > 15)
+        m = 15;
+
+    vector<vector<int>> A;
+    A.resize(n, vector<int>(m));
+
+    int minValue = 9999999;
+    for (int i = 0; i < n; i++)
+    {
+        int maxVal = 0;
+        for (int j = 0; j < m; j++)
+        {
+            cout << "Element of column - " << i << " of row - " << j << " of list A : ";
+            int element;
+            cin >> element;
+            if (element > maxVal)
+                maxVal = element;
+        }
+
+        cout << "Local max value - " << maxVal << endl;
+        if (minValue > maxVal)
+            minValue = maxVal;
+    }
+
+    cout << "Found lowest value of all maximum values, with value - " << minValue << endl;
+}
+
+int main()
+{
+    cout << "Variant 12" << endl;
+    cout << "Task 1" << endl;
+    TaskOne();
+
+    cout << "Task 2" << endl;
+    TaskTwo();
+
+    cout << "Task 3" << endl;
+    TaskThree();
+
+    return 1;
 }
 
