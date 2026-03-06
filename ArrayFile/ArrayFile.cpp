@@ -370,15 +370,27 @@ void TaskThree()
 int main()
 {
     cout << "Variant 12" << endl;
-    cout << "Task 1" << endl;
-    TaskOne();
 
-    cout << "Task 2" << endl;
-    TaskTwo();
-
-    cout << "Task 3" << endl;
-    TaskThree();
-
+    cout << "Please input what task you would prefer to run" << endl;
+    int task;
+    cin >> task;
+    if (task == 1)
+    {
+        cout << "Task 1" << endl;
+        TaskOne();
+    }
+    else if (task == 2)
+    {
+        cout << "Task 2" << endl;
+        TaskTwo();
+    }
+    else if (task == 3)
+    {
+        cout << "Task 3" << endl;
+        TaskThree();
+    }
+    else
+        cout << "There is no such task as Task " << task << "!" << endl;
     return 1;
 }
 
