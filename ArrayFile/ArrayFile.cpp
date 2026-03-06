@@ -301,7 +301,7 @@ void TaskTwo()
         cout << "Element equal to T2 was not found in the list" << endl;
 
     int lastMinId = -1;
-    int minVal = 0;
+    int minVal = 999999;
     bool foundValid = false;
 
     for (int i = firstT2 + 1; i < A.size(); ++i)
